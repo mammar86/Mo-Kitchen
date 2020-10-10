@@ -15,6 +15,8 @@ namespace Mo_Kitchen.Models
 
         // Add database tables here
 
+        public DbSet<Recipe> Recipes { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
