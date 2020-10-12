@@ -31,11 +31,19 @@ namespace Mo_Kitchen.Controllers
         // Returns a list of all your Recipes
         //
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes()
+        public async Task<ActionResult<IEnumerable<Recipe>>> GetRecipes(string filter)
         {
+            if (filter == null)
+            {
+                return await _context.Recipes.ToListAsync();
+            }
+            else
+            {
+                return await _context.Recipes.Where(restaurant => restaurant.Title.ToLower().Contains(filter.ToLower())).ToListAsync();
+            }
             // Uses the database context in `_context` to request all of the Recipes, sort
             // them by row id and return them as a JSON array.
-            return await _context.Recipes.OrderBy(row => row.Id).ToListAsync();
+
         }
 
         // GET: api/Recipes/5

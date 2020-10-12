@@ -1,3 +1,5 @@
+@import 'searchResults.scss';
+@import 'recipeDirections';
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 :root {
@@ -27,7 +29,7 @@ body {
 }
 
 .scrolling-cuisines,
-.featurette {
+.card-deck {
   width: 70%;
   margin: auto;
 }
@@ -168,4 +170,39 @@ body {
 footer {
   color: #dedede;
   background-color: #4a4948;
+}
+
+.img-fluid {
+  height: 500px;
+  width: 500px;
+}
+
+.iconDetails {
+  margin-left: 2%;
+  float: left;
+  height: 40px;
+  width: 40px;
+}
+
+.container2 {
+  width: 100%;
+  height: auto;
+  padding: 1%;
+}
+
+///////////////////////
+.card-deck {
+  margin-top: 3rem;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 7px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3rem;
 }
