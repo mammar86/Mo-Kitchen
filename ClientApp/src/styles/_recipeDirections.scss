@@ -1,0 +1,40 @@
+.recipe-directions {
+  margin: auto;
+  width: 75%;
+  background-color: inherit;
+}
+
+.recipe-directions .details {
+  background-color: white;
+  width: 50%;
+  margin: 3rem auto;
+  border: 1px solid grey;
+  text-align: center;
+  box-shadow: 5px 5px 8px -4px grey;
+
+  h2 {
+    margin: 1.5rem;
+  }
+
+  .first-list {
+    width: 90%;
+    list-style: none;
+    margin-left: 2rem;
+    border-bottom: 3px solid lightgray;
+
+    li {
+      margin: 1rem;
+      text-align: left;
+    }
+  }
+}
+
+.recipe-steps {
+  width: 85%;
+  margin: auto;
+
+  h3 {
+    text-align: left;
+    margin: 1.5rem;
+  }
+}

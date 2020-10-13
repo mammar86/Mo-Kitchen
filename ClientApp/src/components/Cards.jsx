@@ -1,10 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export function Cards() {
   return (
+    <>
+    
+    <nav aria-label="breadcrumb">
+  <ol className="breadcrumb">
+    <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+    <li className="breadcrumb-item active">Recipes</li>
+  </ol>
+</nav>
+    
     <main className = "searchResult">
 
     <article>
+
 
     <div className="card-deck search-cards">
 <div className="card">
@@ -62,6 +73,8 @@ export function Cards() {
 </div>
     </article>
   </main>
+
+  </>
   )
 
 }
