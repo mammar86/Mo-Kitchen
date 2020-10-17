@@ -8,32 +8,25 @@ import { RecipeDirections } from './components/RecipeDirections'
 import { AddRecipe } from './components/AddRecipe'
 import { MainContents } from './components/MainContents'
 
-
-
 export function App() {
   return (
-   <>
+    <>
       <Header />
-    <Switch>
-   
-      <Route exact path="/">
-      <MainContents />
-      </Route>
-      <Route exact path="/recipes">
-      <Cards/>
-      </Route>
-      <Route exact path="/viewRecipe">
-      <RecipeDirections />
-      </Route>
-      <Route exact Path="/add">
-      <AddRecipe/>
-      </Route>
-
-
-    </Switch>
-    <Footer />
-
+      <Switch>
+        <Route exact path="/">
+          <MainContents />
+        </Route>
+        <Route exact path="/recipes/">
+          <Cards />
+        </Route>
+        <Route exact path="/add/">
+          <AddRecipe />
+        </Route>
+        <Route exact path="/recipes/:id">
+          <RecipeDirections />
+        </Route>
+      </Switch>
+      <Footer />
     </>
-
   )
 }

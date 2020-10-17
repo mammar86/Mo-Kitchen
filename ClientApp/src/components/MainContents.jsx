@@ -1,55 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 
 export function MainContents() {
 
-  const [desserts, setDesserts] = useState([{
-    "id": 4,
-    "title": "Bananas Foster Ice Cream",
-    "preparationTime": "45 minutes",
-    "diet": "Vegetarian",
-    "serving": 2,
-    "sourceName": null,
-    "photo": "https://spoonacular.com/recipeImages/634237-556x370.jpg",
-    "instructions": null,
-    "cuisine": "Creole",
-    "occasion": null,
-    "rating": null,
-    "dishType": null
-  },
-  {
-    "id": 5,
-    "title": "Vanilla Coconut Snowball Cupcakes",
-    "preparationTime": "45 minutes",
-    "diet": "Vegetarian",
-    "serving": 13,
-    "sourceName": null,
-    "photo": "https://spoonacular.com/recipeImages/664306-556x370.jpg",
-    "instructions": null,
-    "cuisine": "American",
-    "occasion": null,
-    "rating": null,
-    "dishType": null
-  },
-  {
-    "id": 6,
-    "title": "Chocolate Nutella Walnut Cake",
-    "preparationTime": "45 minutes",
-    "diet": "Italian",
-    "serving": 8,
-    "sourceName": null,
-    "photo": "https://spoonacular.com/recipeImages/639114-556x370.jpg",
-    "instructions": null,
-    "cuisine": "American",
-    "occasion": null,
-    "rating": null,
-    "dishType": null
-  }]);
+  const [desserts, setDesserts] = useState([]);
   const [filterText, setFilterText] = useState('');
-
-
-
-
 
   async function loadRecipes() {
 
@@ -62,22 +17,19 @@ export function MainContents() {
   }
 
 
-
-
-
-  //  useEffect(
-  //     // we used a function inside of a function here because use async with the first function create and error
-  //      () => {
-  //        async function loadRecipes() { 
-  //         const url = filterText.length === 0 ? '/api/Recipes' : `/api/Recipes?filter=${filterText}`
-  //         const response = await fetch(url)
-  //         const json = await response.json()
-  //         setDesserts(json)
-  //        }
-  //     loadRecipes()
-  //    },
-  //    [filterText],
-  //  )
+   useEffect(
+      // we used a function inside of a function here because use async with the first function create and error
+       () => {
+         async function loadRecipes() { 
+          const url = filterText.length === 0 ? '/api/Recipes' : `/api/Recipes?filter=${filterText}`
+          const response = await fetch(url)
+          const json = await response.json()
+          setDesserts(json)
+         }
+      loadRecipes()
+     },
+     [filterText],
+   )
 
 
 
@@ -157,7 +109,7 @@ export function MainContents() {
         <div className="card-deck">
 
           {desserts.map(dessert => <div className="card" key={dessert.id}>
-            <img src={dessert.photo} className="card-img-top" alt="..."></img>
+            <img src={dessert.picture} className="card-img-top" alt="..."></img>
             <div className="card-body">
               <h5 className="card-title">{dessert.title}</h5>
               <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>

@@ -17,6 +17,11 @@ namespace Mo_Kitchen.Models
 
         public DbSet<Recipe> Recipes { get; set; }
 
+        public DbSet<Rating> Ratings { get; set; }
+
+        public DbSet<User> Users { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
