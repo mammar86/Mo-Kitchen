@@ -1,4 +1,7 @@
 {
   "name": "Mo_Kitchen",
-  "private": "true"
+  "private": "true",
+  "dependencies": {
+    "mdbreact": "^4.27.0"
+  }
 }

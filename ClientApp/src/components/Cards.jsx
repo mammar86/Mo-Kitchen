@@ -2,19 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 export function Cards() {
-  const [desserts, setDesserts] = useState([])
+  const [recipes, setRecipes] = useState([])
   const [filterText, setFilterText] = useState('')
-
-  async function loadRecipes() {
-    const url =
-      filterText.length === 0
-        ? '/api/Recipes'
-        : `/api/Recipes?filter=${filterText}`
-    const response = await fetch(url)
-    const json = await response.json()
-
-    setDesserts(json)
-  }
 
   useEffect(
     // we used a function inside of a function here because use async with the first function create and error
@@ -26,7 +15,7 @@ export function Cards() {
             : `/api/Recipes?filter=${filterText}`
         const response = await fetch(url)
         const json = await response.json()
-        setDesserts(json)
+        setRecipes(json)
       }
       loadRecipes()
     },
@@ -45,9 +34,33 @@ export function Cards() {
       </nav>
 
       <main className="searchResult">
+        <form>
+          <div className="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
+            <div className="input-group">
+              <input
+                type="search"
+                placeholder="What're you searching for?"
+                aria-describedby="button-addon1"
+                className="form-control border-0 bg-light"
+                value={filterText}
+                onChange={(event) => setFilterText(event.target.value)}
+              ></input>
+              <div className="input-group-append">
+                <button
+                  id="button-addon1"
+                  type="submit"
+                  className="btn btn-link text-primary"
+                >
+                  <i className="fa fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+
         <article>
           <div className="card-deck search-cards">
-            {desserts.map((dessert) => (
+            {recipes.map((dessert) => (
               <div className="card">
                 <img
                   src={dessert.picture}
@@ -55,7 +68,7 @@ export function Cards() {
                   alt="..."
                 ></img>
                 <div className="card-body">
-                  <Link to={`/Recipes/13`}>
+                  <Link to={`/Recipes/${dessert.id}`}>
                     <h5 className="card-title">{dessert.title}</h5>
                   </Link>
                   {/* <p className="card-text">

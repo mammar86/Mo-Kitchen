@@ -13,13 +13,10 @@ html {
 
 body {
   background-color: whitesmoke;
-  margin: 0;
+  margin: auto;
   min-height: 100%;
   font-family: 'montserrat';
 }
-
-// main
-
 .main-image {
   width: 100% !important;
   height: 31rem;
@@ -27,6 +24,10 @@ body {
   justify-content: center;
   align-items: center;
   background-image: url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80://images.pexels.com/photos/1095550/pexels-photo-1095550.jpeg?auto=compress&cs=tinysrgb&h=750&w=2000);
+}
+
+.grid {
+  padding: 3rem;
 }
 
 .scrolling-cuisines,

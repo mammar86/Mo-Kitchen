@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './styles/custom.scss'
 import { Header } from './components/Header'
 import { Footer } from './components/Footer'
@@ -7,6 +7,7 @@ import { Cards } from './components/Cards'
 import { RecipeDirections } from './components/RecipeDirections'
 import { AddRecipe } from './components/AddRecipe'
 import { MainContents } from './components/MainContents'
+import { RemoteRecipeDirections } from './components/RemoteRecipeDirections'
 
 export function App() {
   return (
@@ -15,6 +16,7 @@ export function App() {
       <Switch>
         <Route exact path="/">
           <MainContents />
+          <Footer />
         </Route>
         <Route exact path="/recipes/">
           <Cards />
@@ -25,8 +27,10 @@ export function App() {
         <Route exact path="/recipes/:id">
           <RecipeDirections />
         </Route>
+        <Route exact path="/:id">
+          <RemoteRecipeDirections />
+        </Route>
       </Switch>
-      <Footer />
     </>
   )
 }

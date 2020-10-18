@@ -43,7 +43,7 @@ export function RecipeDirections() {
             <a href="/Recipes/">Recipes</a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Recipe
+            {id}
           </li>
         </ol>
       </nav>
@@ -58,16 +58,14 @@ export function RecipeDirections() {
           <li>Servings: {recipe.servings}</li>
         </ul>
 
-        <div className="recipe-steps">
-          <h3>Ingredients</h3>
+        <div className="recipe-details">
+          <h4>Ingredients</h4>
+          <p>({recipe.ingredients})</p>
 
-          <ul>
-            <li>{recipe.ingredients}</li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          <div>
+            <h4>Steps</h4>
+            <p>{recipe.steps}</p>
+          </div>
         </div>
       </div>
     </section>
