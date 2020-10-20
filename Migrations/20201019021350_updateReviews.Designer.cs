@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mo_Kitchen.Models;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -9,9 +10,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MoKitchen.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20201019021350_updateReviews")]
+    partial class updateReviews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,15 +37,10 @@ namespace MoKitchen.Migrations
                     b.Property<int>("Stars")
                         .HasColumnType("integer");
 
-                    b.Property<string>("Summary")
-                        .HasColumnType("text");
-
                     b.Property<int>("UserId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RecipeId");
 
                     b.ToTable("Ratings");
                 });
@@ -54,6 +51,9 @@ namespace MoKitchen.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<int>("CookingTime")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Cuisine")
                         .HasColumnType("text");
@@ -72,7 +72,7 @@ namespace MoKitchen.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("ReadyIn")
+                    b.Property<int>("PrepTime")
                         .HasColumnType("integer");
 
                     b.Property<int>("Servings")
@@ -104,28 +104,14 @@ namespace MoKitchen.Migrations
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("HashedPassword")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Mo_Kitchen.Models.Rating", b =>
-                {
-                    b.HasOne("Mo_Kitchen.Models.Recipe", null)
-                        .WithMany("Ratings")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Mo_Kitchen.Models.Recipe", b =>

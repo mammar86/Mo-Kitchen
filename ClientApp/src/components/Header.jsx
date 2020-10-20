@@ -35,7 +35,7 @@ export function Header() {
               <NavLink href="">SIGNIN</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="">SIGNUP</NavLink>
+              <NavLink href="/signup">SIGNUP</NavLink>
             </NavItem>
 
             {/* <UncontrolledDropdown nav inNavbar>

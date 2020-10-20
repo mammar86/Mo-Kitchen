@@ -15,14 +15,31 @@ export function MainContents() {
           'https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=12&tags=dinner'
         const response = await fetch(url)
         const json = await response.json()
-        setDinnerRecipes(json.recipes)
+        console.log(json)
+        if (json.recipes) {
+          setDinnerRecipes(json.recipes)
+        }
       }
       loadDinnerRecipes()
     },
     []
   )
-  console.log(dinnerRecipes)
-  // useEffect(
+
+  async function loadSearch(event) {
+    event.preventDefault()
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=12&tags=${filterText}`
+
+    const response = await fetch(url)
+    const json = await response.json()
+
+    if (json.recipes) {
+      setDinnerRecipes(json.recipes)
+    }
+
+    console.log(json.recipes)
+  }
+
+  // useEffect(recipes
   //   // we used a function inside of a function here because use async with the first function create and error
   //   () => {
   //     async function loadRecipes() {
@@ -50,7 +67,7 @@ export function MainContents() {
       </nav>
 
       <section className="main-image">
-        <form>
+        <form onSubmit={loadSearch}>
           <div className="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
             <div className="input-group">
               <input
@@ -59,6 +76,7 @@ export function MainContents() {
                 aria-describedby="button-addon1"
                 className="form-control border-0 bg-light"
                 value={filterText}
+                onChange={(event) => setFilterText(event.target.value)}
               ></input>
               <div className="input-group-append">
                 <button

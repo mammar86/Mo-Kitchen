@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-export function RemoteRecipeDirections() {
+export function RemoteRecipeDirections(props) {
   const params = useParams()
   const id = params.id
 
@@ -74,7 +74,6 @@ export function RemoteRecipeDirections() {
 
       <div className="details">
         <h2>{recipe.title}</h2>
-        <p>Rating: ⭐⭐⭐⭐⭐ (63 votes)</p>
         <img src={recipe.image} alt=""></img>
         <ul className="first-list">
           <li>Ready In: {recipe.readyInMinutes} minutes</li>
