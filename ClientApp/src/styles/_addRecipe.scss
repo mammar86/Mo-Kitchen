@@ -9,15 +9,17 @@
 
 .form-container {
   width: 70%;
+  min-height: 100vh;
 }
 
 .add {
   background-color: white;
-  width: 100%;
-  margin: 2rem auto;
+  width: 60%;
+  margin: 3rem auto;
   padding: 20px;
   box-shadow: 5px 5px 8px -4px grey;
   border-radius: 7px;
+  min-height: 85vh;
 
   h2 {
     text-align: center;

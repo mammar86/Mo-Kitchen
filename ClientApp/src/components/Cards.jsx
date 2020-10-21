@@ -29,7 +29,7 @@ export function Cards() {
           <li className="breadcrumb-item">
             <Link to="/">Home</Link>
           </li>
-          <li className="breadcrumb-item active">Recipes</li>
+          <li className="breadcrumb-item active">User Recipes </li>
         </ol>
       </nav>
 

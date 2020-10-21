@@ -50,5 +50,10 @@ namespace Mo_Kitchen.Models
 
             return $"server={connectionParts[2]};database={connectionParts[4]};User Id={connectionParts[0]};password={connectionParts[1]};port={connectionParts[3]}";
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(user => user.Email).IsUnique();
+        }
     }
 }

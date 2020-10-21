@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
 export function SignUp() {
+  const [errorMessage, setErrorMessage] = useState()
+  const [newUser, setNewUser] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+  })
+
+  const history = useHistory()
+
+  function handleStringFieldChange(event) {
+    const value = event.target.value
+    const fieldName = event.target.name
+    const updatedUser = { ...newUser, [fieldName]: value }
+    setNewUser(updatedUser)
+  }
+
+  async function handleFormSubmit(event) {
+    event.preventDefault()
+    const response = await fetch('/api/Users', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(newUser),
+    })
+    const apiResponse = await response.json()
+    if (apiResponse.status === 400) {
+      setErrorMessage(Object.values(apiResponse.errors).join(' '))
+    } else {
+      history.push('/')
+    }
+  }
+
   return (
-    <section className="signup-section">
+    <body>
       <div className="signup-form">
-        <form action="/examples/actions/confirmation.php" method="post">
+        <form onSubmit={handleFormSubmit}>
           <h2>Sign Up</h2>
           <p>Please fill in this form to create an account!</p>
           <hr></hr>
@@ -16,6 +48,7 @@ export function SignUp() {
                 name="fullName"
                 placeholder="Full Name"
                 required
+                onChange={handleStringFieldChange}
               ></input>
             </div>
           </div>
@@ -26,6 +59,7 @@ export function SignUp() {
               name="email"
               placeholder="Email"
               required
+              onChange={handleStringFieldChange}
             ></input>
           </div>
           <div className="form-group">
@@ -35,6 +69,7 @@ export function SignUp() {
               name="password"
               placeholder="Password"
               required
+              onChange={handleStringFieldChange}
             ></input>
           </div>
           <div className="form-group">
@@ -44,19 +79,26 @@ export function SignUp() {
               name="confirm_password"
               placeholder="Confirm Password"
               required
+              onChange={handleStringFieldChange}
             ></input>
           </div>
-
+          {/* <div className="form-group">
+            <label className="form-check-label">
+              <input type="checkbox" required></input> I accept the{' '}
+              <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a>
+            </label>
+          </div> */}
           <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-lg">
+            <button type="submit" className="btn btn-success">
               Sign Up
             </button>
           </div>
+          {errorMessage && <p>{errorMessage}</p>}
         </form>
         <div className="hint-text">
           Already have an account? <a href="#">Login here</a>
         </div>
       </div>
-    </section>
+    </body>
   )
 }

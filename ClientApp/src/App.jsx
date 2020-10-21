@@ -10,6 +10,7 @@ import { MainContents } from './components/MainContents'
 import { RemoteRecipeDirections } from './components/RemoteRecipeDirections'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact'
 import { SignUp } from './components/SignUp'
+import { Login } from './components/Login'
 
 export function App() {
   return (
@@ -18,6 +19,9 @@ export function App() {
       <Switch>
         <Route exact path="/">
           <MainContents />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Route exact path="/signup">
           <SignUp />

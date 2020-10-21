@@ -4,11 +4,10 @@ import { useHistory } from 'react-router-dom'
 export function AddRecipe() {
   const [newRecipe, setNewRecipe] = useState({
     title: '',
-    prepTime: 0,
-    cookingTime: 0,
+    readyIn: 0,
     diet: '',
     servings: 0,
-    userId: 0,
+    userId: 23,
     picture: '',
     steps: '',
     cuisine: '',
@@ -65,7 +64,7 @@ export function AddRecipe() {
           <form className="add" onSubmit={handleFormSubmit}>
             <h2>Add Recipe</h2>
             <div className="form-items">
-              <label htmlFor="RecipeName">Recipe Name:</label>
+              <label htmlFor="RecipeName">Recipe Name</label>
               <input
                 type="text"
                 id="recipeName"
@@ -74,7 +73,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="prepTime">cuisine:</label>
+              <label htmlFor="prepTime">Cuisine</label>
               <input
                 type="text"
                 id="prepTime"
@@ -83,7 +82,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="prepTime">Diet:</label>
+              <label htmlFor="prepTime">Diet</label>
               <input
                 type="text"
                 id="prepTime"
@@ -101,25 +100,16 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="prepTime">Prep Time:</label>
+              <label htmlFor="prepTime">Ready In</label>
               <input
                 type="text"
                 id="prepTime"
-                name="prepTime"
+                name="readyIn"
                 onChange={handleNumberFieldChange}
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="cookingTime">Cooking Time:</label>
-              <input
-                type="text"
-                id="cookingTime"
-                name="cookingTime"
-                onChange={handleNumberFieldChange}
-              ></input>
-            </div>
-            <div className="form-items">
-              <label htmlFor="serving">Serving:</label>
+              <label htmlFor="serving">Servings</label>
               <input
                 type="text"
                 id="serving"
@@ -145,19 +135,19 @@ export function AddRecipe() {
                 rows={4}
               ></textarea>
             </div>
-            <h4>Cooking Steps</h4>
             <div className="form-items">
               <div className="cooking-steps1">
-                <label htmlFor="steps">Steps</label>
+                <label htmlFor="steps">Cooking Steps</label>
                 <textarea
                   name="steps"
                   onChange={handleStringFieldChange}
                 ></textarea>
               </div>
             </div>
-            <button type="submit" className="btn btn-outline-success btn-block">
+            <button type="submit" className="btn btn-success btn-block">
               Submit
             </button>
+            {errorMessage && <p>{errorMessage}</p>}
           </form>
         </div>
       </section>

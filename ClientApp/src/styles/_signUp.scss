@@ -1,8 +1,3 @@
-body {
-  color: #fff;
-  height: 100vh;
-  font-family: 'Roboto', sans-serif;
-}
 .form-control {
   height: 41px;
   background: #f2f2f2;
@@ -17,8 +12,9 @@ body {
   border-radius: 3px;
 }
 .signup-form {
-  width: 390px;
-  margin: 30px auto;
+  width: 400px;
+  margin: 5rem auto;
+  height: 80vh;
 }
 .signup-form form {
   color: #999;
@@ -51,17 +47,15 @@ body {
 .signup-form .btn {
   font-size: 16px;
   font-weight: bold;
-  background: #3598dc;
   border: none;
   min-width: 140px;
 }
 .signup-form .btn:hover,
 .signup-form .btn:focus {
-  background: #2389cd !important;
   outline: none;
 }
 .signup-form a {
-  color: #fff;
+  color: blue;
   text-decoration: underline;
 }
 .signup-form a:hover {
