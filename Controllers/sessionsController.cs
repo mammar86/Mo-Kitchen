@@ -39,7 +39,20 @@ namespace Mo_Kitchen.Controllers
         public async Task<ActionResult> Login(LoginUser loginUser)
         {
             var foundUser = await _context.Users.FirstOrDefaultAsync(user => user.Email == loginUser.Email);
-            if (foundUser != null && foundUser.IsValidPassword(loginUser.Password))
+
+            if (foundUser == null)
+            {
+                // Make a custom error response
+                var response = new
+                {
+                    status = 400,
+                    errors = new List<string>() { "User does not exist" }
+                };
+                // Return our error with the custom response
+                return BadRequest(response);
+            }
+
+            if (foundUser.IsValidPassword(loginUser.Password))
             {
                 // create a custom response
                 var response = new
@@ -57,7 +70,7 @@ namespace Mo_Kitchen.Controllers
                 var response = new
                 {
                     status = 400,
-                    errors = new List<string>() { "User does not exist" }
+                    errors = new List<string>() { "Password is not correct" }
                 };
                 // Return our error with the custom response
                 return BadRequest(response);
