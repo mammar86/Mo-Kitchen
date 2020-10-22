@@ -56,8 +56,8 @@ export function Login() {
             <input
               type="password"
               className="form-control"
-              name="confirm_password"
-              placeholder="Confirm Password"
+              name="password"
+              placeholder="password"
               required
               onChange={handleStringFieldChange}
             ></input>
