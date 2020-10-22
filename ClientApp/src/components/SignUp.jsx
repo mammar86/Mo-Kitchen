@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 export function SignUp() {
   const [errorMessage, setErrorMessage] = useState()
@@ -96,7 +96,7 @@ export function SignUp() {
           {errorMessage && <p>{errorMessage}</p>}
         </form>
         <div className="hint-text">
-          Already have an account? <a href="#">Login here</a>
+          Already have an account? <Link to="/login">Login here</Link>
         </div>
       </div>
     </body>

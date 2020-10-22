@@ -13,11 +13,19 @@ import {
   DropdownItem,
   NavbarText,
 } from 'reactstrap'
+import { getUser, isLoggedIn, logout } from '../auth'
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggle = () => setIsOpen(!isOpen)
+
+  const user = getUser()
+
+  function handleLogout() {
+    logout()
+    window.location.assign('/')
+  }
   return (
     <header>
       <Navbar color="light" light expand="md">
@@ -28,15 +36,28 @@ export function Header() {
             <NavItem>
               <NavLink href="/recipes">USER RECIPES</NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="/add">ADD-RECIPE</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/login">LOGIN</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/signup">SIGNUP</NavLink>
-            </NavItem>
+            {isLoggedIn() && (
+              <NavItem>
+                <NavLink href="/add">ADD-RECIPE</NavLink>
+              </NavItem>
+            )}
+
+            {isLoggedIn() || (
+              <NavItem>
+                <NavLink href="/login">LOGIN</NavLink>
+              </NavItem>
+            )}
+            {isLoggedIn() || (
+              <NavItem>
+                <NavLink href="/signup">SIGNUP</NavLink>
+              </NavItem>
+            )}
+
+            {isLoggedIn() && (
+              <span className="link" onClick={handleLogout}>
+                Sign out
+              </span>
+            )}
 
             {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -50,7 +71,9 @@ export function Header() {
               </DropdownMenu>
             </UncontrolledDropdown> */}
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+          <NavbarText>
+            {isLoggedIn() && <p>Welcome back, {user.fullName}!</p>}
+          </NavbarText>
         </Collapse>
       </Navbar>
     </header>

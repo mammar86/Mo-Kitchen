@@ -138,7 +138,6 @@ namespace Mo_Kitchen.Controllers
         [HttpPost]
         public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
         {
-            recipe.UserId = 25;
             // Indicate to the database context we want to add this new record
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();

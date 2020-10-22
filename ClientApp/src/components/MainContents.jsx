@@ -27,7 +27,7 @@ export function MainContents() {
 
   async function loadSearch(event) {
     event.preventDefault()
-    const url = `https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=12&tags=${filterText}`
+    const url = `https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=15&tags=${filterText}`
 
     const response = await fetch(url)
     const json = await response.json()
@@ -94,7 +94,7 @@ export function MainContents() {
 
       <section className="card-deck grid">
         {dinnerRecipes.map((recipe) => (
-          <div className="card">
+          <div key={recipe.id} className="card">
             <img src={recipe.image} className="card-img-top" alt=""></img>
             <div className="card-body">
               <Link to={`/${recipe.id}`}>
@@ -104,7 +104,17 @@ export function MainContents() {
               <p className="card-text">
                 <small className="text-muted">Last updated 3 mins ago</small>
               </p> */}
-              <p></p>
+              <p className="card-side-details">
+                <div>
+                  <i className="fas fa-user-friends"></i>
+                  <strong>{recipe.servings}</strong>
+                </div>
+
+                <div>
+                  <i className="far fa-heart"> </i>
+                  <strong>{recipe.aggregateLikes}</strong>
+                </div>
+              </p>
             </div>
           </div>
         ))}
