@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { authHeader } from '../auth'
 
 export function AddRecipe() {
   const [newRecipe, setNewRecipe] = useState({
@@ -34,17 +35,22 @@ export function AddRecipe() {
     event.preventDefault()
     const response = await fetch('/api/Recipes', {
       method: 'POST',
-      headers: { 'content-type': 'application/json' },
+      headers: { 'content-type': 'application/json', ...authHeader() },
       body: JSON.stringify(newRecipe),
     })
-    const json = await response.json()
 
-    if (response.status === 400) {
-      const message = Object.values(json.errors).join(' ')
-
-      setErrorMessage(message)
+    if (response.status === 401) {
+      setErrorMessage('Not Authroized')
     } else {
-      history.push('/Recipes')
+      const json = await response.json()
+
+      if (response.status === 400) {
+        const message = Object.values(json.errors).join(' ')
+
+        setErrorMessage(message)
+      } else {
+        history.push('/Recipes')
+      }
     }
   }
 
@@ -60,7 +66,6 @@ export function AddRecipe() {
       </nav>
       <section className="add-recipe-page">
         <div className="form-container">
-          {errorMessage && <p>{errorMessage}</p>}
           <form className="add" onSubmit={handleFormSubmit}>
             <h2>Add Recipe</h2>
             <div className="form-items">
@@ -144,10 +149,10 @@ export function AddRecipe() {
                 ></textarea>
               </div>
             </div>
+            {errorMessage && <p>{errorMessage}</p>}
             <button type="submit" className="btn btn-success btn-block">
               Submit
             </button>
-            {errorMessage && <p>{errorMessage}</p>}
           </form>
         </div>
       </section>

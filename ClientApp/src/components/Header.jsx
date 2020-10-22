@@ -54,9 +54,11 @@ export function Header() {
             )}
 
             {isLoggedIn() && (
-              <span className="link" onClick={handleLogout}>
-                Sign out
-              </span>
+              <NavItem>
+                <NavLink className="link" onClick={handleLogout}>
+                  SIGN OUT
+                </NavLink>
+              </NavItem>
             )}
 
             {/* <UncontrolledDropdown nav inNavbar>

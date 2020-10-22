@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -136,8 +138,13 @@ namespace Mo_Kitchen.Controllers
         // new values for the record.
         //
         [HttpPost]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         public async Task<ActionResult<Recipe>> PostRecipe(Recipe recipe)
         {
+
+            // Set the UserID to the current user id, this overrides anything the user specifies.
+            recipe.UserId = GetCurrentUserId();
+
             // Indicate to the database context we want to add this new record
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
@@ -182,6 +189,12 @@ namespace Mo_Kitchen.Controllers
         private bool RecipeExists(int id)
         {
             return _context.Recipes.Any(recipe => recipe.Id == id);
+        }
+        // Private helper method to get the JWT claim related to the user ID
+        private int GetCurrentUserId()
+        {
+            // Get the User Id from the claim and then parse it as an integer.
+            return int.Parse(User.Claims.FirstOrDefault(claim => claim.Type == "Id").Value);
         }
     }
 }

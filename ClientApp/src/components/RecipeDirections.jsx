@@ -23,12 +23,12 @@ import { Link, useParams } from 'react-router-dom'
 //   )
 // }
 
+const params = useParams()
+
+// same like // const { id } = useParams()
+const id = Number(params.id)
+
 export function RecipeDirections() {
-  // const { id } = useParams()
-
-  const params = useParams()
-  const id = params.id
-
   const [recipe, setRecipe] = useState({
     title: 'fake name',
     prepTime: 5,
@@ -42,6 +42,11 @@ export function RecipeDirections() {
     dishType: '',
     ingredients: '',
     ratings: [],
+  })
+
+  const [newRating, setNewRating] = useState({
+    stars: 0,
+    recipeId: id,
   })
 
   useEffect(() => {

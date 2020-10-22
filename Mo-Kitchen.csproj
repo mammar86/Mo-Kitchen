@@ -10,6 +10,7 @@
     <UserSecretsId>86631de6-29f6-4e2b-b864-1ee9b5e403fe</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.13.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
@@ -44,7 +45,7 @@
     <!-- Include the newly-built files in the publish output -->
     <ItemGroup>
       <DistFiles Include="$(SpaRoot)build\**" />
-      <ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
         <RelativePath>%(DistFiles.Identity)</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
