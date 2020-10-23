@@ -23,11 +23,6 @@ import { Link, useParams } from 'react-router-dom'
 //   )
 // }
 
-const params = useParams()
-
-// same like // const { id } = useParams()
-const id = Number(params.id)
-
 export function RecipeDirections() {
   const [recipe, setRecipe] = useState({
     title: 'fake name',
@@ -36,7 +31,7 @@ export function RecipeDirections() {
     diet: 'fake diet',
     servings: 6,
     userId: 0,
-    picture: 'fake data',
+    photoURL: 'fake data',
     steps: 'fake steps',
     cuisine: '',
     dishType: '',
@@ -44,10 +39,10 @@ export function RecipeDirections() {
     ratings: [],
   })
 
-  const [newRating, setNewRating] = useState({
-    stars: 0,
-    recipeId: id,
-  })
+  // const { id } = useParams()
+
+  const params = useParams()
+  const id = params.id
 
   useEffect(() => {
     async function fetchRecipes() {
@@ -78,7 +73,7 @@ export function RecipeDirections() {
       <div className="details">
         <h2>{recipe.title}</h2>
         <p>Rating: ⭐⭐⭐⭐⭐ ({`${recipe.ratings.length} votes`})</p>
-        <img src={recipe.picture} alt=""></img>
+        <img src={recipe.photoURL} alt=""></img>
         <ul className="first-list">
           <li>Prep Time: {recipe.prepTime}</li>
           <li>Cooking Time:{recipe.cookingTime}</li>

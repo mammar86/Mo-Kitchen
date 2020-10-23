@@ -1,15 +1,19 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useDropzone } from 'react-dropzone'
+
 import { authHeader } from '../auth'
 
 export function AddRecipe() {
+  const [isUploading, setIsUploading] = useState(false)
+
   const [newRecipe, setNewRecipe] = useState({
     title: '',
     readyIn: 0,
     diet: '',
     servings: 0,
     userId: 23,
-    picture: '',
+    photoURL: '',
     steps: '',
     cuisine: '',
     dishType: '',
@@ -54,6 +58,60 @@ export function AddRecipe() {
     }
   }
 
+  async function onDropFile(acceptedFiles) {
+    // Do something with the files
+    const fileToUpload = acceptedFiles[0]
+    console.log(fileToUpload)
+    // Create a formData object so we can send this
+    // to the API that is expecting som form data.
+    const formData = new FormData()
+    // Append a field that is the form upload itself
+    formData.append('file', fileToUpload)
+    try {
+      setIsUploading(true)
+
+      // Use fetch to send an authorization header and
+      // a body containing the form data with the file
+      const response = await fetch('/api/Uploads', {
+        method: 'POST',
+        headers: {
+          ...authHeader(),
+        },
+        body: formData,
+      })
+
+      setIsUploading(false)
+
+      // If we receive a 200 OK response, set the
+      // URL of the photo in our state so that it is
+      // sent along when creating the restaurant,
+      // otherwise show an error
+      if (response.status === 200) {
+        const apiResponse = await response.json()
+        const url = apiResponse.url
+        setNewRecipe({ ...newRecipe, photoURL: url })
+      } else {
+        setErrorMessage('Unable to upload image')
+      }
+    } catch {
+      setIsUploading(false)
+
+      // Catch any network errors and show the user we could not process their upload
+      setErrorMessage('Unable to upload image')
+    }
+  }
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop: onDropFile,
+  })
+
+  let dropZoneMessage = 'Drag a picture of the restaurant here to upload!'
+
+  if (isUploading) {
+    dropZoneMessage = 'Uploading...'
+  }
+  if (isDragActive) {
+    dropZoneMessage = 'Drop the files here ...'
+  }
   return (
     <>
       <nav aria-label="breadcrumb">
@@ -78,7 +136,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="prepTime">Cuisine</label>
+              <label htmlFor="cuisine">Cuisine</label>
               <input
                 type="text"
                 id="prepTime"
@@ -87,7 +145,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="prepTime">Diet</label>
+              <label htmlFor="diet">Diet</label>
               <input
                 type="text"
                 id="prepTime"
@@ -96,7 +154,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="cookingTime">Dish Type</label>
+              <label htmlFor="dishType">Dish Type</label>
               <input
                 type="text"
                 id="cookingTime"
@@ -105,7 +163,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="prepTime">Ready In</label>
+              <label htmlFor="ReadyIn">Ready In</label>
               <input
                 type="text"
                 id="prepTime"
@@ -114,7 +172,7 @@ export function AddRecipe() {
               ></input>
             </div>
             <div className="form-items">
-              <label htmlFor="serving">Servings</label>
+              <label htmlFor="servings">Servings</label>
               <input
                 type="text"
                 id="serving"
@@ -124,13 +182,21 @@ export function AddRecipe() {
             </div>
 
             <div className="form-items">
-              <label htmlFor="serving">Image URL</label>
-              <input
-                type="text"
-                id="browseImage"
-                name="picture"
-                onChange={handleStringFieldChange}
-              ></input>
+              {newRecipe.photoURL && (
+                <p>
+                  <img
+                    alt="Recipe Photo"
+                    width={200}
+                    src={newRecipe.photoURL}
+                  />
+                </p>
+              )}
+              <div className="file-drop-zone">
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {dropZoneMessage}
+                </div>
+              </div>
             </div>
             <div className="form-items">
               <label className="ingredients-title">Ingredients</label>

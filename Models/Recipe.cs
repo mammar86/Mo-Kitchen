@@ -15,7 +15,7 @@ namespace Mo_Kitchen.Models
         public int Servings { get; set; }
         public int UserId { get; set; }
         [Required]
-        public string Picture { get; set; }
+        public string PhotoURL { get; set; }
         [Required]
         public string Steps { get; set; }
         public string Cuisine { get; set; }
