@@ -8,7 +8,6 @@ import { RecipeDirections } from './components/RecipeDirections'
 import { AddRecipe } from './components/AddRecipe'
 import { MainContents } from './components/MainContents'
 import { RemoteRecipeDirections } from './components/RemoteRecipeDirections'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact'
 import { SignUp } from './components/SignUp'
 import { Login } from './components/Login'
 
