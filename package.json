@@ -2,6 +2,7 @@
   "name": "Mo_Kitchen",
   "private": "true",
   "dependencies": {
+    "heroku": "^7.46.2",
     "mdbreact": "^4.27.0"
   }
 }
