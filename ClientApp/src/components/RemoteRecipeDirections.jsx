@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-export function RemoteRecipeDirections(props) {
+export function RemoteRecipeDirections() {
   const params = useParams()
   const id = params.id
 
@@ -55,8 +55,6 @@ export function RemoteRecipeDirections(props) {
       console.log(apiData)
     }
     fetchRecipes()
-
-    console.log(recipe)
   }, [id])
 
   return (

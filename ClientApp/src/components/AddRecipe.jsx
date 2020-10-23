@@ -184,11 +184,7 @@ export function AddRecipe() {
             <div className="form-items">
               {newRecipe.photoURL && (
                 <p>
-                  <img
-                    alt="Recipe Photo"
-                    width={200}
-                    src={newRecipe.photoURL}
-                  />
+                  <img alt="Recipe" width={200} src={newRecipe.photoURL} />
                 </p>
               )}
               <div className="file-drop-zone">

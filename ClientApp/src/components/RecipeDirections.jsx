@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 // function Stars(props) {
 //   const totalStars = props.recipe.ratings.reduce(
@@ -72,7 +72,9 @@ export function RecipeDirections() {
 
       <div className="details">
         <h2>{recipe.title}</h2>
-        <p>Rating: ⭐⭐⭐⭐⭐ ({`${recipe.ratings.length} votes`})</p>
+        <p>
+          Rating: <span>⭐⭐⭐⭐⭐</span> ({`${recipe.ratings.length} votes`})
+        </p>
         <img src={recipe.photoURL} alt=""></img>
         <ul className="first-list">
           <li>Prep Time: {recipe.prepTime}</li>
@@ -91,7 +93,6 @@ export function RecipeDirections() {
         </div>
         <div className="starts-rating">
           <h5>Rate this Recipe</h5>
-          <h5></h5>
         </div>
       </div>
     </section>
