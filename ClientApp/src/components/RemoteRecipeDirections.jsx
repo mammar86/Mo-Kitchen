@@ -56,7 +56,15 @@ export function RemoteRecipeDirections() {
     fetchRecipes()
   }, [id])
 
-  function separateArticles() {
+  function separateIngredients() {
+    const paragraphsArr = recipe.instructions.split(', ')
+    const singleParagraph = paragraphsArr.map((paragraph) => (
+      <li>{paragraph}</li>
+    ))
+    return singleParagraph
+  }
+
+  function separateSteps() {
     const paragraphsArr = recipe.instructions.split('. ')
     const singleParagraph = paragraphsArr.map((paragraph) => (
       <li>{paragraph}</li>
@@ -97,7 +105,7 @@ export function RemoteRecipeDirections() {
 
           <div>
             <h4>Steps</h4>
-            <p>{separateArticles()}</p>
+            <p>{separateSteps()}</p>
           </div>
         </div>
       </div>

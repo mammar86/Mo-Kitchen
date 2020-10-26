@@ -60,16 +60,16 @@ export function Cards() {
 
         <article>
           <div className="card-deck search-cards">
-            {recipes.map((dessert) => (
-              <div className="card">
+            {recipes.map((recipe) => (
+              <div className="card" key={recipe.id}>
                 <img
-                  src={dessert.picture}
+                  src={recipe.picture}
                   className="card-img-top"
                   alt="..."
                 ></img>
                 <div className="card-body">
-                  <Link to={`/Recipes/${dessert.id}`}>
-                    <h5 className="card-title">{dessert.title}</h5>
+                  <Link to={`/Recipes/${recipe.id}`}>
+                    <h5 className="card-title">{recipe.title}</h5>
                   </Link>
                   {/* <p className="card-text">
                     This is a longer card with supporting text below as a

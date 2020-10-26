@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 
-import { authHeader } from '../auth'
+import { authHeader, getUser } from '../auth'
+
+const user = getUser()
 
 export function AddRecipe() {
   const [isUploading, setIsUploading] = useState(false)
@@ -12,7 +14,7 @@ export function AddRecipe() {
     readyIn: 0,
     diet: '',
     servings: 0,
-    userId: 23,
+    userId: 0,
     photoURL: '',
     steps: '',
     cuisine: '',
@@ -126,6 +128,7 @@ export function AddRecipe() {
         <div className="form-container">
           <form className="add" onSubmit={handleFormSubmit}>
             <h2>Add Recipe</h2>
+            <h5>By {user.fullName}</h5>
             <div className="form-items">
               <label htmlFor="RecipeName">Recipe Name</label>
               <input

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
+import { authHeader, getUser, isLoggedIn } from '../auth'
 
 // function Stars(props) {
 //   const totalStars = props.recipe.ratings.reduce(
@@ -39,6 +40,9 @@ export function RecipeDirections() {
     ratings: [],
   })
 
+  const history = useHistory()
+  const user = getUser()
+
   // const { id } = useParams()
 
   const params = useParams()
@@ -53,6 +57,17 @@ export function RecipeDirections() {
     }
     fetchRecipes()
   }, [id])
+
+  async function handleDelete(event) {
+    event.preventDefault()
+    const response = await fetch(`/api/Recipes/${id}`, {
+      method: 'DELETE',
+      headers: { 'content-type': 'application/json', ...authHeader() },
+    })
+    if (response.status === 200 || response.status === 204) {
+      history.push('/recipes')
+    }
+  }
 
   return (
     <section className="recipe-directions">
@@ -72,10 +87,12 @@ export function RecipeDirections() {
 
       <div className="details">
         <h2>{recipe.title}</h2>
+        <h5>By {user.fullName}</h5>
         <p>
           Rating: <span>⭐⭐⭐⭐⭐</span> ({`${recipe.ratings.length} votes`})
         </p>
-        <img src={recipe.photoURL} alt=""></img>
+
+        <img src={recipe.photoURL} width={600} alt=""></img>
         <ul className="first-list">
           <li>Prep Time: {recipe.prepTime}</li>
           <li>Cooking Time:{recipe.cookingTime}</li>
@@ -91,9 +108,14 @@ export function RecipeDirections() {
             <p>{recipe.steps}</p>
           </div>
         </div>
-        <div className="starts-rating">
+
+        {isLoggedIn() && recipe.userId === user.id && (
+          <button onClick={handleDelete}>Delete</button>
+        )}
+
+        {/* <div className="starts-rating">
           <h5>Rate this Recipe</h5>
-        </div>
+        </div> */}
       </div>
     </section>
   )
