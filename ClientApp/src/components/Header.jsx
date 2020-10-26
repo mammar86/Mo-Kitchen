@@ -56,6 +56,11 @@ export function Header() {
                 </NavLink>
               </NavItem>
             )}
+            {isLoggedIn() && (
+              <NavItem>
+                <NavLink href="/profile">PROFILE</NavLink>
+              </NavItem>
+            )}
 
             {/* <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>

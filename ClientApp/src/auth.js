@@ -56,7 +56,7 @@ export const getUserId = () => {
 //
 export const getUser = () => {
   const auth = authFromStorage()
-
+  console.log(auth)
   return auth.user
 }
 
@@ -78,7 +78,8 @@ export const updateUserAuth = (updatedUser) => {
   const auth = authFromStorage()
 
   auth.user.fullName = updatedUser.fullName
-  auth.user.photoURL = updatedUser.photoURL
+  auth.user.email = updatedUser.email
+  // auth.user.photoURL = updatedUser.photoURL
 
   recordAuthentication(auth)
 }

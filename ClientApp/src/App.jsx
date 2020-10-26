@@ -10,6 +10,7 @@ import { MainContents } from './components/MainContents'
 import { RemoteRecipeDirections } from './components/RemoteRecipeDirections'
 import { SignUp } from './components/SignUp'
 import { Login } from './components/Login'
+import { EditUser } from './components/EditUser'
 
 export function App() {
   return (
@@ -25,7 +26,10 @@ export function App() {
         <Route exact path="/signup">
           <SignUp />
         </Route>
-        <Route exact path="/recipes/">
+        <Route exact path="/profile">
+          <EditUser />
+        </Route>
+        <Route exact path="/recipes">
           <Cards />
         </Route>
         <Route exact path="/add/">

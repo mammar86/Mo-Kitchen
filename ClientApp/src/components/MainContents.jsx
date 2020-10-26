@@ -39,23 +39,6 @@ export function MainContents() {
     console.log(json.recipes)
   }
 
-  // useEffect(recipes
-  //   // we used a function inside of a function here because use async with the first function create and error
-  //   () => {
-  //     async function loadRecipes() {
-  //       const url =
-  //         filterText.length === 0
-  //           ? '/api/Recipes'
-  //           : `/api/Recipes?filter=${filterText}`
-  //       const response = await fetch(url)
-  //       const json = await response.json()
-  //       setDesserts(json)
-  //     }
-  //     loadRecipes()
-  //   },
-  //   [filterText]
-  // )
-
   return (
     <main>
       <nav aria-label="breadcrumb">
@@ -100,10 +83,7 @@ export function MainContents() {
               <Link to={`/${recipe.id}`}>
                 <h5 className="card-title">{recipe.title}</h5>
               </Link>
-              {/* <p className="card-text"></p>
-              <p className="card-text">
-                <small className="text-muted">Last updated 3 mins ago</small>
-              </p> */}
+
               <p className="card-side-details">
                 <div>
                   <i className="fas fa-user-friends"></i>

@@ -26,12 +26,12 @@ export function RemoteRecipeDirections() {
     pricePerServing: 0,
     extendedIngredients: [],
     id: 0,
-    title: 'Pasta Margherita',
+    title: '',
     readyInMinutes: 0,
     servings: 0,
-    sourceUrl: 'http://pickfreshfoods.com/pasta-margherita/',
-    image: 'https://spoonacular.com/recipeImages/511728-556x370.jpg',
-    imageType: 'jpg',
+    sourceUrl: '',
+    image: '',
+    imageType: '',
     summary: '',
     cuisines: [],
     dishTypes: [],
@@ -52,11 +52,17 @@ export function RemoteRecipeDirections() {
       const apiData = await response.json()
 
       setRecipe(apiData)
-      console.log(apiData)
     }
     fetchRecipes()
   }, [id])
 
+  function separateArticles() {
+    const paragraphsArr = recipe.instructions.split('. ')
+    const singleParagraph = paragraphsArr.map((paragraph) => (
+      <li>{paragraph}</li>
+    ))
+    return singleParagraph
+  }
   return (
     <section className="recipe-directions">
       <nav aria-label="breadcrumb">
@@ -74,20 +80,24 @@ export function RemoteRecipeDirections() {
         <h2>{recipe.title}</h2>
         <img src={recipe.image} alt=""></img>
         <ul className="first-list">
-          <li>Ready In: {recipe.readyInMinutes} minutes</li>
-          <li>Servings: {recipe.servings}</li>
+          <li>
+            <i className="far fa-clock"> </i> {recipe.readyInMinutes} minutes
+          </li>
+          <li>
+            <i className="fas fa-user-friends"></i> {recipe.servings}
+          </li>
         </ul>
 
         <div className="recipe-details">
           <h4>Ingredients</h4>
-          <p>
-            {recipe.extendedIngredients
-              .map((ingredient) => ingredient.name)
-              .join(', ')}
-          </p>
+
+          {recipe.extendedIngredients
+            .map((ingredient) => ingredient.name)
+            .join(', ')}
+
           <div>
             <h4>Steps</h4>
-            <p>{recipe.instructions}</p>
+            <p>{separateArticles()}</p>
           </div>
         </div>
       </div>
