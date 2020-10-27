@@ -11,6 +11,7 @@ import { RemoteRecipeDirections } from './components/RemoteRecipeDirections'
 import { SignUp } from './components/SignUp'
 import { Login } from './components/Login'
 import { EditUser } from './components/EditUser'
+import { RemoteSearchResults } from './components/RemoteSearchResults'
 
 export function App() {
   return (
@@ -34,6 +35,10 @@ export function App() {
         </Route>
         <Route exact path="/recipes">
           <Cards />
+        </Route>
+        <Route exact path="/search/:searchText">
+          <Header />
+          <RemoteSearchResults />
         </Route>
         <Route exact path="/add">
           <Header />

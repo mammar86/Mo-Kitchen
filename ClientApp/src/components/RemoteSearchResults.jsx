@@ -1,27 +1,51 @@
-import { MainContents } from './MainContents'
+import React, { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 
 export function RemoteSearchResults() {
-  return (
-    <main className="searchResult">
-      <article>
-        <div className="card-deck search-cards">
-          {/* {searchedRecipes.map((recipe) => (
-            <div className="card" key={recipe.id}>
-              <img
-                src={recipe.photoURL}
-                className="card-img-top"
-                alt="..."
-              ></img>
-              <div className="card-body">
-                <Link to={`/Recipes/${recipe.id}`}>
-                  <h4 className="card-title">{recipe.title}</h4>
-                </Link>
+  const params = useParams()
+  const [searchedRecipes, setSearchedRecipes] = useState([])
 
+  const searchText = params.searchText
+
+  useEffect(() => {
+    async function loadSearch() {
+      const url = `https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=15&tags=${searchText}`
+
+      const response = await fetch(url)
+      const json = await response.json()
+
+      if (json.recipes) {
+        setSearchedRecipes(json.recipes)
+      }
+    }
+
+    loadSearch()
+  }, [searchText])
+
+  return (
+    <section className="card-deck grid">
+      {searchedRecipes.map((recipe) => (
+        <div key={recipe.id} className="card">
+          <img src={recipe.image} className="card-img-top" alt=""></img>
+          <div className="card-body">
+            <Link to={`/${recipe.id}`}>
+              <h5 className="card-title">{recipe.title}</h5>
+            </Link>
+
+            <p className="card-side-details">
+              <div>
+                <i className="fas fa-user-friends"></i>
+                <strong>{recipe.servings}</strong>
               </div>
-            </div>
-          ))} */}
+
+              <div>
+                <i className="far fa-heart"> </i>
+                <strong>{recipe.aggregateLikes}</strong>
+              </div>
+            </p>
+          </div>
         </div>
-      </article>
-    </main>
+      ))}
+    </section>
   )
 }

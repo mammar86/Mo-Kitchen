@@ -88,7 +88,7 @@ export function RecipeDirections() {
         <h2>{recipe.title}</h2>
         <h5>By {user.fullName}</h5>
         <p>
-          Rating: <span>⭐⭐⭐⭐⭐</span> ({`${recipe.ratings.length} votes`})
+          {/* Rating: <span>⭐⭐⭐⭐⭐</span> ({`${recipe.ratings.length} votes`}) */}
         </p>
 
         <img src={recipe.photoURL} width={600} alt=""></img>

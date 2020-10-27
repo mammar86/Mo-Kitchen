@@ -126,12 +126,14 @@ footer {
 }
 
 .card {
-  padding: 20px;
+  padding: 10px;
   border-radius: 7px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .grid {
+  padding-top: 5rem;
+  margin-left: auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 3rem;
@@ -290,4 +292,40 @@ footer {
   .navbar .login-form .btn {
     width: 100%;
   }
+}
+
+// recipes grid picture main page
+
+.section-recipes {
+  width: 80%;
+  margin: 4rem auto 4rem auto;
+  padding: 0;
+}
+.recipes-showcase {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+}
+
+.recipes-showcase li {
+  display: block;
+  float: left;
+  width: 25%;
+
+  figure {
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+.recipes-showcase img {
+  width: 100%;
+  height: auto;
+  transform: scale(1.15);
+  transition: transform 0.5s;
+}
+
+.recipes-showcase img:hover {
+  transform: scale(1);
 }
