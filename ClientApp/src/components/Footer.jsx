@@ -1,6 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 export function Footer() {
+  const history = useHistory()
   return (
     <footer className="page-footer font-small special-color-dark pt-4">
       <div className="container">
@@ -10,7 +12,7 @@ export function Footer() {
               <input
                 className="form-control form-control-sm mr-3 w-75"
                 type="text"
-                placeholder="Search"
+                placeholder="Search Recipes"
                 aria-label="Search"
               ></input>
               <i className="fas fa-search" aria-hidden="true"></i>
@@ -18,7 +20,10 @@ export function Footer() {
           </div>
 
           <div className="col-md-6 mb-4">
-            <form className="input-group">
+            <form
+              className="input-group"
+              onSubmit={() => history.push('/signup')}
+            >
               <input
                 type="text"
                 className="form-control form-control-sm"
@@ -29,7 +34,7 @@ export function Footer() {
               <div className="input-group-append">
                 <button
                   className="btn btn-sm btn-outline-white my-0"
-                  type="button"
+                  type="submit"
                 >
                   Sign up
                 </button>

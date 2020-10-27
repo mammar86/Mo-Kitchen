@@ -26,14 +26,13 @@ import { authHeader, getUser, isLoggedIn } from '../auth'
 
 export function RecipeDirections() {
   const [recipe, setRecipe] = useState({
-    title: 'fake name',
-    prepTime: 5,
-    cookingTime: 6,
-    diet: 'fake diet',
-    servings: 6,
+    title: '',
+    readyIn: 0,
+    diet: '',
+    servings: 0,
     userId: 0,
-    photoURL: 'fake data',
-    steps: 'fake steps',
+    photoURL: '',
+    steps: '',
     cuisine: '',
     dishType: '',
     ingredients: '',
@@ -94,9 +93,12 @@ export function RecipeDirections() {
 
         <img src={recipe.photoURL} width={600} alt=""></img>
         <ul className="first-list">
-          <li>Prep Time: {recipe.prepTime}</li>
-          <li>Cooking Time:{recipe.cookingTime}</li>
-          <li>Servings: {recipe.servings}</li>
+          <li>
+            <i className="far fa-clock"> </i> {recipe.readyIn} minutes
+          </li>
+          <li>
+            <i className="fas fa-user-friends"></i> {recipe.servings}
+          </li>
         </ul>
 
         <div className="recipe-details">

@@ -56,7 +56,6 @@ export const getUserId = () => {
 //
 export const getUser = () => {
   const auth = authFromStorage()
-  console.log(auth)
   return auth.user
 }
 

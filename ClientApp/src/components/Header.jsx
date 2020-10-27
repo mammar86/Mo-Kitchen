@@ -32,12 +32,6 @@ export function Header() {
             <NavItem>
               <NavLink href="/recipes">USER RECIPES</NavLink>
             </NavItem>
-            {isLoggedIn() && (
-              <NavItem>
-                <NavLink href="/add">ADD-RECIPE</NavLink>
-              </NavItem>
-            )}
-
             {isLoggedIn() || (
               <NavItem>
                 <NavLink href="/login">LOGIN</NavLink>

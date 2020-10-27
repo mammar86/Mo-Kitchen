@@ -21,7 +21,19 @@
     grid-template-columns: 1fr;
   }
 }
+.card-title {
+  text-align: center;
+}
 
 .rounded {
   margin: auto;
+}
+
+.user-on-card {
+  font-style: italic;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 0;
+  text-align: center;
+  padding-top: 0;
 }

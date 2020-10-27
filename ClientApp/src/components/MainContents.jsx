@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 export function MainContents() {
   const [dinnerRecipes, setDinnerRecipes] = useState([])
   const [filterText, setFilterText] = useState('')
+  const [searchedRecipes, setSearchedRecipes] = useState([])
 
   useEffect(
     // we used a function inside of a function here because use async with the first function create and error
@@ -20,6 +21,7 @@ export function MainContents() {
           setDinnerRecipes(json.recipes)
         }
       }
+
       loadDinnerRecipes()
     },
     []
@@ -33,10 +35,8 @@ export function MainContents() {
     const json = await response.json()
 
     if (json.recipes) {
-      setDinnerRecipes(json.recipes)
+      setSearchedRecipes(json.recipes)
     }
-
-    console.log(json.recipes)
   }
 
   return (

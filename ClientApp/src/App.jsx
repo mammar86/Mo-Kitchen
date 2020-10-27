@@ -15,30 +15,36 @@ import { EditUser } from './components/EditUser'
 export function App() {
   return (
     <>
-      <Header />
       <Switch>
         <Route exact path="/">
+          <Header />
           <MainContents />
         </Route>
         <Route exact path="/login">
+          <Header />
           <Login />
         </Route>
         <Route exact path="/signup">
+          <Header />
           <SignUp />
         </Route>
         <Route exact path="/profile">
+          <Header />
           <EditUser />
         </Route>
         <Route exact path="/recipes">
           <Cards />
         </Route>
-        <Route exact path="/add/">
+        <Route exact path="/add">
+          <Header />
           <AddRecipe />
         </Route>
         <Route exact path="/recipes/:id">
+          <Header />
           <RecipeDirections />
         </Route>
         <Route exact path="/:id">
+          <Header />
           <RemoteRecipeDirections />
         </Route>
       </Switch>

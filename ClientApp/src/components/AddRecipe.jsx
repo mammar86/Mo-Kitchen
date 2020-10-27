@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useDropzone } from 'react-dropzone'
 
 import { authHeader, getUser } from '../auth'
-
-const user = getUser()
 
 export function AddRecipe() {
   const [isUploading, setIsUploading] = useState(false)
@@ -22,6 +20,7 @@ export function AddRecipe() {
     ingredients: '',
   })
   const [errorMessage, setErrorMessage] = useState()
+  const user = getUser()
   const history = useHistory()
 
   function handleStringFieldChange(event) {
@@ -119,7 +118,10 @@ export function AddRecipe() {
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item">
+            <Link to="/recipes/">USER-RECIPES</Link>
           </li>
           <li className="breadcrumb-item active">Add Recipe</li>
         </ol>

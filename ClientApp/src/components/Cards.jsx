@@ -1,9 +1,91 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getUser, isLoggedIn, logout } from '../auth'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText,
+} from 'reactstrap'
+
+function Header() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => setIsOpen(!isOpen)
+
+  const user = getUser()
+
+  function handleLogout() {
+    logout()
+    window.location.assign('/')
+  }
+  return (
+    <header>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">Mo's Kitchen</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="mr-auto" navbar>
+            {isLoggedIn() && (
+              <NavItem>
+                <NavLink href="/add">ADD-RECIPE</NavLink>
+              </NavItem>
+            )}
+
+            {isLoggedIn() || (
+              <NavItem>
+                <NavLink href="/login">LOGIN</NavLink>
+              </NavItem>
+            )}
+            {isLoggedIn() || (
+              <NavItem>
+                <NavLink href="/signup">SIGNUP</NavLink>
+              </NavItem>
+            )}
+
+            {isLoggedIn() && (
+              <NavItem>
+                <NavLink className="link" onClick={handleLogout}>
+                  SIGN OUT
+                </NavLink>
+              </NavItem>
+            )}
+            {isLoggedIn() && (
+              <NavItem>
+                <NavLink href="/profile">PROFILE</NavLink>
+              </NavItem>
+            )}
+
+            {/* <UncontrolledDropdown nav inNavbar>
+              <DropdownToggle nav caret>
+                Options
+              </DropdownToggle>
+              <DropdownMenu right>
+                <DropdownItem>Option 1</DropdownItem>
+                <DropdownItem>Option 2</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem>Reset</DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown> */}
+          </Nav>
+          <NavbarText>
+            {isLoggedIn() && <p>Welcome back, {user.fullName}!</p>}
+          </NavbarText>
+        </Collapse>
+      </Navbar>
+    </header>
+  )
+}
 
 export function Cards() {
   const [recipes, setRecipes] = useState([])
   const [filterText, setFilterText] = useState('')
+
+  const User = getUser()
 
   useEffect(
     // we used a function inside of a function here because use async with the first function create and error
@@ -22,8 +104,20 @@ export function Cards() {
     [filterText]
   )
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggle = () => setIsOpen(!isOpen)
+
+  const user = getUser()
+
+  function handleLogout() {
+    logout()
+    window.location.assign('/')
+  }
+
   return (
     <>
+      <Header />
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -63,14 +157,15 @@ export function Cards() {
             {recipes.map((recipe) => (
               <div className="card" key={recipe.id}>
                 <img
-                  src={recipe.picture}
+                  src={recipe.photoURL}
                   className="card-img-top"
                   alt="..."
                 ></img>
                 <div className="card-body">
                   <Link to={`/Recipes/${recipe.id}`}>
-                    <h5 className="card-title">{recipe.title}</h5>
+                    <h4 className="card-title">{recipe.title}</h4>
                   </Link>
+                  <p className="user-on-card">By {User.fullName}</p>
                   {/* <p className="card-text">
                     This is a longer card with supporting text below as a
                     natural lead-in to additional content. This content is a
