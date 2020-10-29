@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>AJAX</title>
-    <meta charset="UTF-8" />
-  </head>
-
-  <body>
     <h1 style="text-align: center;">Mo's Kitchen</h1>
 
     <a href="https://mokitchen.herokuapp.com/"
@@ -52,6 +44,3 @@
       <h3>Recipe details page</h3>
       <img src="https://iili.io/3NoE37.gif" style="width: 30rem;" />
     </figure>
-
-  </body>
-</html>
