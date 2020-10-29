@@ -22,7 +22,7 @@ after signUp
 
 #### Main Page
 
-<img src="https://iili.io/3wtBcP.gif" style="width: 30rem;" />
+<img src="https://iili.io/3N8ye2.gif" style="width: 30rem;" />
 
 #### Recipes added by user page
 
