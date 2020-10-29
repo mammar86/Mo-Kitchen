@@ -26,11 +26,11 @@ export function MainContents() {
     },
     []
   )
-
+  console.log(filterText)
   async function loadSearch(event) {
     event.preventDefault()
 
-    history.push(`/search/${filterText}`)
+    history.push(`/search/${filterText.toLowerCase()}`)
   }
 
   return (
