@@ -22,12 +22,22 @@ after signUp
 
 #### Main Page
 
+[click to view]
 <a href="https://ibb.co/F7fdHRj"><img src="https://i.ibb.co/f0KTDjP/Kapture-2020-10-29-at-11-07-45.gif" alt="Kapture-2020-10-29-at-11-07-45" border="0" /></a>
 
-#### Recipes added by user page
+#### Recipe details 
 
-<a href="https://ibb.co/F7fdHRj"><img src="https://i.ibb.co/f0KTDjP/Kapture-2020-10-29-at-11-07-45.gif" alt="Kapture-2020-10-29-at-11-07-45" border="0" style="width: 30rem;" /></a>
+[click to view]
+<a href="https://ibb.co/RQPgQR1"><img src="https://i.ibb.co/Dwk1w0N/Kapture-2020-10-29-at-11-17-02.gif" alt="Kapture-2020-10-29-at-11-17-02" border="0" /></a>
 
-#### Recipe details page
+#### Recipes search results
+
+[click to view]
+<a href="https://ibb.co/0s0zt4c"><img src="https://i.ibb.co/BnhYNWt/Kapture-2020-10-29-at-11-23-07.gif" alt="Kapture-2020-10-29-at-11-23-07" border="0" /></a>
+
+#### User Recipes
+
+[click to view]
+<a href="https://ibb.co/vdj33X1"><img src="https://i.ibb.co/4SV881W/Kapture-2020-10-29-at-11-18-36.gif" alt="Kapture-2020-10-29-at-11-18-36" border="0" /></a>
 
 
