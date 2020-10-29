@@ -20,7 +20,7 @@ page where the users can view recipes added by other members and can added
 their own recipes to the website which will be credited to their name
 after signUp
 
-#### Main Page #### [click to view]
+#### Main Page [click to view]
 
 
 <a href="https://ibb.co/F7fdHRj"><img src="https://i.ibb.co/f0KTDjP/Kapture-2020-10-29-at-11-07-45.gif" alt="Kapture-2020-10-29-at-11-07-45" border="0" /></a>
