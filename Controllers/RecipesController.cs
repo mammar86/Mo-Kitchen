@@ -41,12 +41,11 @@ namespace Mo_Kitchen.Controllers
             }
             else
             {
-                return await _context.Recipes.OrderBy(recipe => recipe.Title).Where(recipe => recipe.Title.Contains(filter)).Include(recipe => recipe.Ratings).ToListAsync();
+                return await _context.Recipes.OrderBy(recipe => recipe.Title).Where(recipe => recipe.Title.ToLower().Contains(filter.ToLower())).Include(recipe => recipe.Ratings).ToListAsync();
 
             }
             // Uses the database context in `_context` to request all of the Recipes, sort
             // them by row id and return them as a JSON array.
-
         }
 
         // GET: api/Recipes/5

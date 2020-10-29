@@ -67,7 +67,10 @@ export function RecipeDirections() {
       history.push('/recipes')
     }
   }
-
+  function separate(text) {
+    const paragraph = text.split(',')
+    return paragraph
+  }
   return (
     <section className="recipe-directions">
       <nav aria-label="breadcrumb">
@@ -103,11 +106,19 @@ export function RecipeDirections() {
 
         <div className="recipe-details">
           <h4>Ingredients</h4>
-          <p>({recipe.ingredients})</p>
+
+          {separate(recipe.ingredients).map((ingredient) => (
+            <p> {ingredient} </p>
+          ))}
+
+          {/* <p>({recipe.ingredients})</p> */}
 
           <div>
             <h4>Steps</h4>
-            <p>{recipe.steps}</p>
+            {separate(recipe.steps).map((step) => (
+              <p> {step} </p>
+            ))}
+            {/* <p>{recipe.steps}</p> */}
           </div>
         </div>
 

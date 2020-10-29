@@ -23,7 +23,7 @@ export function RemoteSearchResults() {
   }, [searchText])
 
   return (
-    <section className="card-deck grid">
+    <section className="card-deck grid main-search">
       {searchedRecipes.map((recipe) => (
         <div key={recipe.id} className="card">
           <img src={recipe.image} className="card-img-top" alt=""></img>

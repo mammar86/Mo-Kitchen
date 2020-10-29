@@ -115,6 +115,13 @@ export function Cards() {
     window.location.assign('/')
   }
 
+  // async function loadSearch() {
+  //   const URL = `/api/Recipes?filter=${filterText}`
+  //   const response = await fetch(URL)
+  //   const json = await response.json()
+  //   setRecipes(json)
+  // }
+
   return (
     <>
       <Header />
@@ -165,7 +172,7 @@ export function Cards() {
                   <Link to={`/Recipes/${recipe.id}`}>
                     <h4 className="card-title">{recipe.title}</h4>
                   </Link>
-                  <p className="user-on-card">By {User.fullName}</p>
+                  <p className="user-on-card">By {user.fullName}</p>
                   {/* <p className="card-text">
                     This is a longer card with supporting text below as a
                     natural lead-in to additional content. This content is a
