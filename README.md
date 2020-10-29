@@ -23,6 +23,7 @@ after signUp
 #### Main Page
 
 <img src="https://iili.io/3N8ye2.gif" style="width: 30rem;" />
+<a href="https://ibb.co/Nr56Jhj"><img src="https://i.ibb.co/vhpxT5P/Kapture-2020-10-29-at-10-55-59.gif" alt="Kapture-2020-10-29-at-10-55-59" border="0" /></a>
 
 #### Recipes added by user page
 
