@@ -9,7 +9,7 @@ export function RemoteSearchResults() {
 
   useEffect(() => {
     async function loadSearch() {
-      const url = `https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=15&tags=${searchText}`
+      const url = `https://api.spoonacular.com/recipes/random?apiKey=a3635e5044724fba9ad98ef0fb30f5fa&number=81&tags=${searchText}`
 
       const response = await fetch(url)
       const json = await response.json()

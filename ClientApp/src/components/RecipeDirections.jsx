@@ -27,6 +27,7 @@ import { authHeader, getUser, isLoggedIn } from '../auth'
 export function RecipeDirections() {
   const [recipe, setRecipe] = useState({
     title: '',
+    author: '',
     readyIn: 0,
     diet: '',
     servings: 0,
@@ -89,7 +90,7 @@ export function RecipeDirections() {
 
       <div className="details">
         <h2>{recipe.title}</h2>
-        <h5>By {user.fullName}</h5>
+        <h5>By {recipe.author}</h5>
         <p>
           {/* Rating: <span>⭐⭐⭐⭐⭐</span> ({`${recipe.ratings.length} votes`}) */}
         </p>

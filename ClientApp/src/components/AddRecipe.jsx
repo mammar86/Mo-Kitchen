@@ -9,6 +9,7 @@ export function AddRecipe() {
 
   const [newRecipe, setNewRecipe] = useState({
     title: '',
+    author: getUser().fullName,
     readyIn: 0,
     diet: '',
     servings: 0,

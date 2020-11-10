@@ -9,6 +9,7 @@ namespace Mo_Kitchen.Models
         [Required]
         public string Title { get; set; }
         [Required]
+        public string Author { get; set; }
         public int ReadyIn { get; set; }
         public string Diet { get; set; }
         [Required]

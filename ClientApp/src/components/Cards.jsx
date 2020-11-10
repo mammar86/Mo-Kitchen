@@ -172,7 +172,9 @@ export function Cards() {
                   <Link to={`/Recipes/${recipe.id}`}>
                     <h4 className="card-title">{recipe.title}</h4>
                   </Link>
-                  <p className="user-on-card">By {user.fullName}</p>
+                  {isLoggedIn() && (
+                    <p className="user-on-card">By {recipe.author}</p>
+                  )}
                   {/* <p className="card-text">
                     This is a longer card with supporting text below as a
                     natural lead-in to additional content. This content is a
