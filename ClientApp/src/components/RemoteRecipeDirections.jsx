@@ -72,43 +72,50 @@ export function RemoteRecipeDirections() {
     return singleParagraph
   }
   return (
-    <section className="recipe-directions">
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <a href="/">Home</a>
-          </li>
-          <li className="breadcrumb-item active" aria-current="page">
-            {id}
-          </li>
-        </ol>
-      </nav>
+    <>
+      {recipe.title.length === 0 ? (
+        <h1>Loading...</h1>
+      ) : (
+        <section className="recipe-directions">
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <a href="/">Home</a>
+              </li>
+              <li className="breadcrumb-item active" aria-current="page">
+                {id}
+              </li>
+            </ol>
+          </nav>
 
-      <div className="details">
-        <h2>{recipe.title}</h2>
-        <img src={recipe.image} alt=""></img>
-        <ul className="first-list">
-          <li>
-            <i className="far fa-clock"> </i> {recipe.readyInMinutes} minutes
-          </li>
-          <li>
-            <i className="fas fa-user-friends"></i> {recipe.servings}
-          </li>
-        </ul>
+          <div className="details">
+            <h2>{recipe.title}</h2>
+            <img src={recipe.image} alt=""></img>
+            <ul className="first-list">
+              <li>
+                <i className="far fa-clock"> </i> {recipe.readyInMinutes}{' '}
+                minutes
+              </li>
+              <li>
+                <i className="fas fa-user-friends"></i> {recipe.servings}
+              </li>
+            </ul>
 
-        <div className="recipe-details">
-          <h4>Ingredients</h4>
+            <div className="recipe-details">
+              <h4>Ingredients</h4>
 
-          {recipe.extendedIngredients
-            .map((ingredient) => ingredient.name)
-            .join(', ')}
+              {recipe.extendedIngredients
+                .map((ingredient) => ingredient.name)
+                .join(', ')}
 
-          <div>
-            <h4>Steps</h4>
-            <p>{separateSteps()}</p>
+              <div>
+                <h4>Steps</h4>
+                <p>{separateSteps()}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
+      )}
+    </>
   )
 }

@@ -70,28 +70,30 @@ export function MainContents() {
       </section>
 
       <section className="card-deck grid">
-        {dinnerRecipes.map((recipe) => (
-          <div key={recipe.id} className="card">
-            <img src={recipe.image} className="card-img-top" alt=""></img>
-            <div className="card-body">
-              <Link to={`/${recipe.id}`}>
-                <h5 className="card-title">{recipe.title}</h5>
-              </Link>
+        {dinnerRecipes.length === 0 && <h1>Loading...</h1>}
+        {dinnerRecipes.length > 0 &&
+          dinnerRecipes.map((recipe) => (
+            <div key={recipe.id} className="card">
+              <img src={recipe.image} className="card-img-top" alt=""></img>
+              <div className="card-body">
+                <Link to={`/${recipe.id}`}>
+                  <h5 className="card-title">{recipe.title}</h5>
+                </Link>
 
-              <p className="card-side-details">
-                <div>
-                  <i className="fas fa-user-friends"></i>
-                  <strong>{recipe.servings}</strong>
-                </div>
+                <p className="card-side-details">
+                  <div>
+                    <i className="fas fa-user-friends"></i>
+                    <strong>{recipe.servings}</strong>
+                  </div>
 
-                <div>
-                  <i className="far fa-heart"> </i>
-                  <strong>{recipe.aggregateLikes}</strong>
-                </div>
-              </p>
+                  <div>
+                    <i className="far fa-heart"> </i>
+                    <strong>{recipe.aggregateLikes}</strong>
+                  </div>
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </section>
     </main>
   )
